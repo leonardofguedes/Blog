@@ -4,5 +4,6 @@ from .models import Post
 
 def post_list(request):
     posts = Post.published.all()
+    return render(request, 'blog/partials/list.html', {'posts': posts})
 
 
