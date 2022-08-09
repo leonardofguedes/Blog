@@ -4,8 +4,19 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def post_list(request):
-    posts = Post.published.all()
-    return render(request, 'blog/partials/list.html', {'posts': posts})
+    list = Post.published.all()
+    paginator = Paginator(list, 3)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request,
+                  'blog/partials/list.html',
+                  {'posts': posts,
+                   'page':page})
 
 
 def post_detail(request, year, month, day, post):
