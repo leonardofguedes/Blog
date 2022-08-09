@@ -13,6 +13,7 @@ def post_detail(request, year, month, day, post):
                              publish__year=year,
                              publish__month=month,
                              publish__day=day)
+    return render(request, 'blog/pages/detail.html', {'post': post})
 
 
 
