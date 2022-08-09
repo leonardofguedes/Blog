@@ -5,8 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    {{ post.title }}
-    {{ post.author }}{{ post.publish }}
-    {{ post.body }}
+    <h1>{{ post.title }}</h1>
+    <p class="date">
+        Publicado em {{ post.publish }} por {{ post.author }}
+    </p>
+    {{ post.body|linebreaks }}
 </body>
 </html>
