@@ -31,5 +31,15 @@
     {% empty %}
         <p>Nenhum comentário registrado.</p>
     {% endfor %}
+    {% if new_comment %}
+        <h2>Seu comentário foi adicionado</h2>
+    {% else %}
+        <h2>Comente esse post</h2>
+        <form method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Add comment"></p>
+        </form>
+    {% endif %}
 </body>
 </html>
