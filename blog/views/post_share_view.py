@@ -13,11 +13,11 @@ def post_share(request, post_id):
         form = EmailPostForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            post_url = request.build_absolute_url(post.get_absolute_url())
+            post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommendes you read {post.title}"
             message = f"Read {post.title} at {post_url}\n\n {cd['name']}\ 's comments: {cd['comments']}"
             send_mail(subject, message, os.environ.get('EMAIL'), [cd['to']])
             sent = True
-        else:
-            form = EmailPostForm()
-        return render(request, 'blog/partials/share', {'post': post, 'form': form, 'sent': sent})
+    else:
+        form = EmailPostForm()
+    return render(request, 'blog/pages/share.html', {'post': post, 'form': form, 'sent': sent})
