@@ -2,7 +2,7 @@ import os
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render
 from blog.forms.email_post_form import EmailPostForm
-from blog.models import Post
+from blog.models.post import Post
 
 
 def post_share(request, post_id):

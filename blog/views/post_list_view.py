@@ -1,4 +1,4 @@
-from blog.models import Post
+from blog.models.post import Post
 from django.views.generic import ListView
 
 
