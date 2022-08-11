@@ -10,5 +10,9 @@
         Publicado em {{ post.publish }} por {{ post.author }}
     </p>
     {{ post.body|linebreaks }}
+    <p>
+        <a href="{% url 'post_share' post.id %}">
+        Compartilhe esse post
+    </p>
 </body>
 </html>
