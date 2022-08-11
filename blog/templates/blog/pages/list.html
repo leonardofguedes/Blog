@@ -10,6 +10,7 @@
     <ul>
     <a href="{{ post.get_absolute_url }}">
         {{ post.title }}
+        <p class="tags">Tags: {{ post.tags.all|join:", " }}</p>
     </a>
     </ul>
     {% endfor %}
