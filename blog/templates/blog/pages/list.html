@@ -8,6 +8,8 @@
 <body>
     <h1>Blog</h1>
     <p>Esse blog contém {% total_posts %} posts até agora.</p>
+    <h3>Últimos posts</h3>
+    {% show_latest_post %}
     {% if tag %}
         <h2>Posts com a tag {{ tag.name }}</h2>
     {% endif %}
