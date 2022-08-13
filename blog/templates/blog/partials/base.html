@@ -1,0 +1,12 @@
+{% load blog_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'blog/partials/head.html' %}
+{% include 'blog/partials/header.html' %}
+<body>
+{% block content %} {% endblock %}
+</body>
+{% include 'blog/partials/paginator.html' %}
+{% include 'blog/partials/footer.html' %}
