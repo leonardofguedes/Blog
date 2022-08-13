@@ -1,13 +1,7 @@
+{% extends 'blog/partials/base.html' %}
 {% load blog_tags %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-
-<body>
+{% block content %}
 
     <h1>Blog</h1>
     <p>Esse blog contém {% total_posts %} posts até agora.</p>
@@ -43,6 +37,4 @@
     <h3>Últimos posts</h3>
     {% show_latest_post %}
     {% include 'blog/partials/paginator.html' with page=posts %}
-
-</body>
-</html>
+{% endblock %}
