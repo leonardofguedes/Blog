@@ -13,7 +13,7 @@
     <img src="{% static 'blog/jpg/animais.jpg' %}" alt="Nature" style="width:100%">
     <div class="w3-container">
       <h3><b>{{ post.title }}</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 7, 2014</span></h5>
+      <h5>Title description, <span class="w3-opacity">{{ post.created }}</span></h5>
     </div>
 
     <div class="w3-container">
