@@ -25,6 +25,7 @@ class Post(models.Model):
     status = models.CharField(max_length=15, choices=STATUS, default='não-publicado')
     objects = models.Manager()
     published = PublishedManager()
+    cover = models.ImageField(upload_to='blog/photos/%Y/%m/%d/', blank=True, default='')
 
     class Meta:
         ordering = ('-publish',)
