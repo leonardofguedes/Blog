@@ -1,7 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+<body class="w3-light-grey">
+<div class="w3-content" style="max-width:1400px">
 {% include 'blog/newpages/head.html' %}
-{% include 'blog/newpages/body.html' %}
-
+{% include 'blog/newpages/header.html' %}
+{% block content %} {% endblock %}
+</div>
+{% include 'blog/newpages/footer.html' %}
+</body>
 </html>
