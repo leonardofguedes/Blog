@@ -1,5 +1,27 @@
-from django.shortcuts import render
+from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
+from django.shortcuts import get_object_or_404, render
+from blog.models.post import Post
+from taggit.models import Tag
 
 
-def cover(request):
-    return render(request, 'blog/newpages/home.html')
+def cover(request, tag_slug=None):
+    tags = Tag.objects.all()
+    object_list = Post.published.all()
+    tag = None
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = object_list.filter(tags__in=[tag])
+
+    paginator = Paginator(object_list, 2)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request, 'blog/newpages/home.html', {'page': page,
+                                                   'posts': posts,
+                                                   'tag': tag,
+                                                    'tags': tags})
