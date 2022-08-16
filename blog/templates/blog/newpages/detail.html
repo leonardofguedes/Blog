@@ -9,7 +9,7 @@
 <div class="w3-col l8 s12">
   <!-- Blog entry -->
   <div href="{{ post.get_absolute_url }}" class="w3-card-4 w3-margin w3-white">
-    <img src="{% static 'blog/jpg/animais.jpg' %}" alt="Nature" style="width:100%">
+    <img src="{{ post.cover.url }}" alt="Nature" style="width:100%">
     <div class="w3-container">
       <h3><b>{{ post.title }}</b></h3>
         {% for tag in post.tags.all %}
@@ -83,7 +83,10 @@
         <a href="{{ post.get_absolute_url }}">
         <img src="{% static 'blog/jpg/images.jpg' %}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">{{ post.title }}</span><br>
-        <span>Sed mattis nunc</span>
+        {% for tag in post.tags.all %}
+        <h5 href="{% url 'post_list_by_tag' tag.slug %}">
+        <span>Tags: {{ tag.name }}{% if not forloop.last %}, {% endif %}</span>
+        {% endfor %}
         </a>
       </li>
       {% endfor %}
