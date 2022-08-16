@@ -19,7 +19,7 @@ def show_latest_post(count=3):
 
 
 @register.simple_tag
-def get_most_commented_posts(count=3):
+def get_most_commented_posts(count=5):
     return Post.published.annotate(
         total_comments=Count('comments')).order_by('-total_comments')[:count]
 
