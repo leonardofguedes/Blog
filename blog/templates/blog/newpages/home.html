@@ -55,27 +55,15 @@
     <div class="w3-container w3-padding">
       <h4>Popular Posts</h4>
     </div>
+    {% get_most_commented_posts as most_commented_posts %}
     <ul class="w3-ul w3-hoverable w3-white">
+      {% for post in most_commented_posts %}
       <li class="w3-padding-16">
         <img src="{% static 'blog/jpg/images.jpg' %}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Lorem</span><br>
+        <span class="w3-large">{{ post.title }}</span><br>
         <span>Sed mattis nunc</span>
       </li>
-      <li class="w3-padding-16">
-        <img src="{% static 'blog/jpg/images.jpg' %}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Ipsum</span><br>
-        <span>Praes tinci sed</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="{% static 'blog/jpg/images.jpg' %}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Dorum</span><br>
-        <span>Ultricies congue</span>
-      </li>
-      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="{% static 'blog/jpg/images.jpg' %}" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Mingsum</span><br>
-        <span>Lorem ipsum dipsum</span>
-      </li>
+      {% endfor %}
     </ul>
   </div>
   <hr>
